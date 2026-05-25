@@ -1,0 +1,73 @@
+/* ============================================================
+   Vida Design Tokens  —  §1 of CLAUDE.md
+   Import only via globals.css. Never @import this directly
+   from components or pages.
+   ============================================================ */
+
+:root {
+  /* ── Primary & highlight ── */
+  --accent:          #1F1B3A;
+  --accent-glow:     #2D2750;
+  --accent-light:    #ECE6F9;
+  --highlight:       #C8B6F0;
+  --highlight-soft:  #ECE6F9;
+
+  /* ── Pastel secondaries ── */
+  --peach:           #F5C99A;
+  --peach-bg:        #FBEFDF;
+  --mint:            #A8D2BA;
+  --mint-bg:         #E2F1EA;
+  --blush:           #F1B8B0;
+  --blush-bg:        #FBE5E2;
+
+  /* ── Status colors ── */
+  --green:           #2F7D5C;
+  --green-bg:        #E2F1EA;
+  --amber:           #B45309;
+  --amber-bg:        #FBEFDF;
+  --red:             #B91C1C;
+  --red-bg:          #FBE5E2;
+  --purple:          #6D28D9;
+  --purple-bg:       #ECE6F9;
+  --teal:            #0E7C8A;
+  --teal-bg:         #DBEEF0;
+
+  /* ── Neutrals (cool) ── */
+  --ink:             #1A1A2E;
+  --ink-2:           #3D3F58;
+  --ink-3:           #6B6E85;
+  --ink-4:           #A4A7BD;
+  --ink-5:           #C9CBDB;
+  --surface:         #FFFFFF;
+  --surface-2:       #F5F6FA;
+  --surface-3:       #ECEEF5;
+  --surface-4:       #DFE2EC;
+  --border:          #E4E7EE;
+  --border-2:        #D6DAE4;
+
+  /* ── Typography ── */
+  --font-body:   var(--font-dm-sans), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif:  var(--font-dm-sans), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono:   var(--font-dm-sans), ui-monospace, "JetBrains Mono", Menlo, monospace;
+
+  /* ── Spacing (4px base) ── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-7:  32px;
+  --space-8:  48px;
+
+  /* ── Radius ── */
+  --r-input:    8px;
+  --r-card:     12px;
+  --r-card-lg:  18px;
+  --r-modal:    24px;
+
+  /* ── Shadows ── */
+  --shadow-card:  0 1px 2px rgba(15,23,42,.05), 0 1px 3px rgba(15,23,42,.04);
+  --shadow-hover: 0 6px 18px rgba(15,23,42,.08), 0 2px 4px rgba(15,23,42,.04);
+  --shadow-pop:   0 12px 32px rgba(15,23,42,.10), 0 2px 6px rgba(15,23,42,.05);
+}
