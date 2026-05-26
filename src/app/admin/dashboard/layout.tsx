@@ -1,14 +1,8 @@
-import { Sidebar } from "@/components/admin/Sidebar";
-
-export default function AdminDashboardLayout({
+// Shell is now provided by src/app/admin/layout.tsx (shared across all admin routes)
+export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <div className="shell">
-      <Sidebar />
-      <div className="main">{children}</div>
-    </div>
-  );
+  return <>{children}</>;
 }

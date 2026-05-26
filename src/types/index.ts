@@ -1,4 +1,6 @@
-// ── Shared entity types — Phase 1 ─────────────────────────────
+// ── Shared entity types ───────────────────────────────────────
+
+// ── UI primitives ─────────────────────────────────────────────
 
 export type StatVariant = "blue" | "green" | "amber" | "purple";
 
@@ -11,12 +13,7 @@ export type TagVariant =
   | "purple"
   | "gray";
 
-export type ButtonVariant =
-  | "primary"
-  | "ghost"
-  | "secondary"
-  | "danger";
-
+export type ButtonVariant = "primary" | "ghost" | "secondary" | "danger";
 export type ButtonSize = "sm" | "md" | "lg";
 
 // Nav item used by Sidebar
@@ -43,7 +40,8 @@ export interface StatData {
   variant?: StatVariant;
 }
 
-// Dashboard — today's classes
+// ── Dashboard mock shapes (Phase 1) ───────────────────────────
+
 export interface ClassSession {
   id: string;
   name: string;
@@ -55,7 +53,6 @@ export interface ClassSession {
   status: "active" | "cancelled" | "full";
 }
 
-// Recent payment row
 export interface RecentPayment {
   id: string;
   studentName: string;
@@ -63,4 +60,82 @@ export interface RecentPayment {
   method: "gcash" | "maya" | "cash" | "card";
   status: "paid" | "pending" | "overdue";
   date: string;
+}
+
+// ── Domain types (Phase 2) ─────────────────────────────────────
+
+export type StudentStatus = "active" | "inactive" | "waitlisted";
+export type ClassCategory = "ballet" | "hiphop" | "contemp" | "jazz" | "adults";
+export type EnrollmentStatus = "active" | "waitlisted" | "completed" | "cancelled";
+export type InvoiceStatus = "pending" | "paid" | "overdue" | "cancelled";
+export type PaymentMethod = "gcash" | "maya" | "cash" | "card" | "qrph" | "grab";
+export type UserRole = "admin" | "staff" | "teacher";
+
+export interface Student {
+  id: string;
+  full_name: string;
+  birth_date?: string;
+  parent_name?: string;
+  parent_email?: string;
+  parent_phone?: string;
+  status: StudentStatus;
+  created_at: string;
+}
+
+export interface DanceClass {
+  id: string;
+  name: string;
+  category: ClassCategory;
+  teacher_name: string;
+  room: string;
+  capacity: number;
+  monthly_fee: number;
+  status: "active" | "inactive";
+}
+
+export interface ScheduleBlock {
+  id: string;
+  class_id: string;
+  name: string;
+  teacher: string;
+  category: ClassCategory;
+  day_of_week: number; // 0 = Mon … 5 = Sat
+  start_time: string;
+  end_time: string;
+  enrolled: number;
+  capacity: number;
+}
+
+export interface Enrollment {
+  id: string;
+  student_id: string;
+  student_name: string;
+  class_id: string;
+  class_name: string;
+  status: EnrollmentStatus;
+  enrolled_at: string;
+}
+
+export interface Invoice {
+  id: string;
+  invoice_number: string;
+  student_id: string;
+  student_name: string;
+  description: string;
+  amount: number;
+  due_date: string;
+  status: InvoiceStatus;
+  method?: PaymentMethod;
+  paid_at?: string;
+}
+
+export interface Payment {
+  id: string;
+  invoice_id: string;
+  student_id: string;
+  student_name: string;
+  amount: number;
+  method: PaymentMethod;
+  reference?: string;
+  paid_at: string;
 }
