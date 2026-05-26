@@ -1077,3 +1077,123 @@ table.tbl tbody tr:hover td {
   margin: 0;
   line-height: 1.55;
 }
+
+/* ── Progress bar / skill row (§2.16) ────────────────────────── */
+.bar {
+  width: 36px;
+  height: 4px;
+  border-radius: 99px;
+  background: var(--surface-3);
+  overflow: hidden;
+  display: inline-block;
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  border-radius: 99px;
+}
+
+.skill-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.skill-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-2);
+  flex: 1;
+}
+
+.skill-bar {
+  flex: 2;
+  height: 6px;
+  border-radius: 99px;
+  background: var(--surface-3);
+  overflow: hidden;
+}
+
+.skill-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--accent), var(--highlight));
+  transition: width 400ms ease;
+}
+
+.skill-val {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-2);
+  min-width: 32px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Teacher note card (§2.17) ───────────────────────────────── */
+.note {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--purple);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.note + .note {
+  margin-top: 12px;
+}
+
+.note-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.note-author {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.note-time {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-3);
+}
+
+.note-body {
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* ── Message thread row ──────────────────────────────────────── */
+.msg-thread {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+
+.msg-thread:last-child {
+  border-bottom: none;
+}
+
+.msg-thread:hover {
+  background: var(--surface-2);
+}
+
+.msg-thread.is-unread {
+  background: var(--highlight-soft);
+}
+
+.msg-thread.is-unread:hover {
+  background: var(--accent-light);
+}

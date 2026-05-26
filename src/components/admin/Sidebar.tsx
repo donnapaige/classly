@@ -6,6 +6,7 @@ import {
   LayoutDashboard,
   CalendarDays,
   UserPlus,
+  Users,
   Receipt,
   MessageSquare,
   Banknote,
@@ -19,9 +20,10 @@ const NAV: NavSection[] = [
     items: [
       { label: "Dashboard",  href: "/admin/dashboard",      icon: LayoutDashboard },
       { label: "Schedule",   href: "/admin/schedule",        icon: CalendarDays },
+      { label: "Students",   href: "/admin/students",        icon: Users },
       { label: "Enrollment", href: "/admin/enrollment/new",  icon: UserPlus },
       { label: "Billing",    href: "/admin/billing",         icon: Receipt },
-      { label: "Messaging",  href: "/admin/messaging",       icon: MessageSquare, badge: 3 },
+      { label: "Messaging",  href: "/admin/messaging",       icon: MessageSquare, badge: 2 },
     ],
   },
   {
