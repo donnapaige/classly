@@ -1197,3 +1197,474 @@ table.tbl tbody tr:hover td {
 .msg-thread.is-unread:hover {
   background: var(--accent-light);
 }
+
+/* ─────────────────────────────────────────────────────────────────
+   §2.10  Mobile portal layout + top bar
+   ──────────────────────────────────────────────────────────────── */
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  max-width: 680px;
+  margin: 0 auto;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 56px 16px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.nav-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-2);
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+
+.nav-btn:hover {
+  background: var(--surface-2);
+}
+
+.nav-center {
+  flex: 1;
+}
+
+.nav-title {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  line-height: 1.15;
+}
+
+.nav-sub {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-3);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   §2.11  Day-selector pill bar
+   ──────────────────────────────────────────────────────────────── */
+
+.days {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 20px 16px 14px;
+  background: var(--surface-2);
+  flex-shrink: 0;
+}
+
+.days::-webkit-scrollbar {
+  display: none;
+}
+
+.day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 52px;
+  padding: 8px 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 120ms ease, border-color 120ms ease;
+  position: relative;
+}
+
+.d-name {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-3);
+}
+
+.d-num {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.day.has-class::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 99px;
+  background: var(--accent);
+}
+
+.day.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.day.is-active .d-name {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.day.is-active .d-num {
+  color: #fff;
+}
+
+.day.is-active.has-class::after {
+  background: #fff;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   §2.12  Schedule timeline card (mobile)
+   ──────────────────────────────────────────────────────────────── */
+
+.timeline {
+  padding: 16px 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.timeline .trow {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.timeline .time-col {
+  width: 52px;
+  flex-shrink: 0;
+  text-align: right;
+  padding-top: 14px;
+}
+
+.ttime {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+  display: block;
+  line-height: 1.2;
+}
+
+.tampm {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  display: block;
+}
+
+.card {
+  flex: 1;
+  border-radius: 14px;
+  padding: 14px 16px;
+  border-left: 4px solid var(--card-border, var(--accent));
+  background: var(--card-bg, var(--surface));
+  transition: transform 150ms ease;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+.card:active {
+  transform: scale(0.99);
+}
+
+.card.is-ballet  { --card-bg: #DBEAFE; --card-border: #3B82F6; --card-text: #1E40AF; }
+.card.is-hiphop  { --card-bg: #EDE9FE; --card-border: #8B5CF6; --card-text: #5B21B6; }
+.card.is-contemp { --card-bg: #DCFCE7; --card-border: #22C55E; --card-text: #166534; }
+.card.is-jazz    { --card-bg: #FEF3C7; --card-border: #F59E0B; --card-text: #92400E; }
+.card.is-adults  { --card-bg: #E0F2FE; --card-border: #0EA5E9; --card-text: #0C4A6E; }
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.card-tag {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--card-text, var(--accent));
+}
+
+.card-time-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--card-text, var(--ink-3));
+  opacity: 0.7;
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+  margin-bottom: 2px;
+}
+
+.card-sub {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ink-3);
+}
+
+.card-foot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.card-progress-text {
+  flex: 1;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--ink-3);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   §2.13  Bottom nav bar
+   ──────────────────────────────────────────────────────────────── */
+
+.tabs {
+  display: flex;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -2px 8px rgba(15, 23, 42, 0.03);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  flex-shrink: 0;
+}
+
+.tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 4px;
+  color: var(--ink-3);
+  cursor: pointer;
+  text-decoration: none;
+  min-height: 56px;
+  transition: color 120ms ease;
+}
+
+.tab-ic {
+  width: 20px;
+  height: 20px;
+}
+
+.tab-lbl {
+  font-size: 10.5px;
+  font-weight: 600;
+}
+
+.tab.is-active {
+  color: var(--accent);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   §2.15  Payment method card
+   ──────────────────────────────────────────────────────────────── */
+
+.methods {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.method {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  cursor: pointer;
+  transition: border-color 120ms ease, background 120ms ease;
+  width: 100%;
+  text-align: left;
+}
+
+.method:hover {
+  border-color: #c8d4ff;
+}
+
+.method.is-selected {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, var(--accent-light), var(--surface) 80%);
+}
+
+.method-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.method-body {
+  flex: 1;
+}
+
+.method-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.method-sub {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-3);
+}
+
+.m-radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 99px;
+  border: 2px solid var(--border-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: border-color 120ms ease;
+  position: relative;
+}
+
+.method.is-selected .m-radio {
+  border-color: var(--accent);
+}
+
+.m-radio::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 99px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.method.is-selected .m-radio::after {
+  opacity: 1;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   Portal utilities: greeting, quick-stats, page containers
+   ──────────────────────────────────────────────────────────────── */
+
+.portal-greeting {
+  padding: 20px 16px 8px;
+}
+
+.portal-quick-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 0 16px 16px;
+}
+
+.pqs-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  padding: 14px;
+}
+
+.pqs-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+  margin-bottom: 4px;
+}
+
+.pqs-val {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.pqs-sub {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--ink-3);
+  margin-top: 2px;
+}
+
+.pqs-card.is-alert {
+  background: var(--amber-bg);
+  border-color: transparent;
+}
+
+.pqs-card.is-alert .pqs-label { color: var(--amber); }
+.pqs-card.is-alert .pqs-val   { color: var(--amber); }
+.pqs-card.is-alert .pqs-sub   { color: var(--amber); opacity: 0.8; }
+
+.portal-page {
+  padding: 20px 16px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.portal-section-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-3);
+  padding: 0 16px 8px;
+}
+
+.portal-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  padding: 16px;
+  box-shadow: var(--shadow-card);
+}
