@@ -3,10 +3,15 @@ import type { NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 
 export async function proxy(request: NextRequest) {
-  // Pass through if Supabase isn't wired up yet
+  // Pass through if Supabase isn't wired up yet (missing OR still placeholder)
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (!supabaseUrl || !supabaseKey) return NextResponse.next();
+  const isConfigured =
+    typeof supabaseUrl === "string" &&
+    supabaseUrl !== "https://your-project-ref.supabase.co" &&
+    typeof supabaseKey === "string" &&
+    supabaseKey !== "your-anon-key-here";
+  if (!isConfigured) return NextResponse.next();
 
   let response = NextResponse.next({ request });
 
