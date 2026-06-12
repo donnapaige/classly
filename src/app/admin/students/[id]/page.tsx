@@ -142,8 +142,9 @@ function DetailRow({ label, value }: { label: string; value: string }) {
 }
 
 // ── Page ──────────────────────────────────────────────────────
-export default function StudentDetailPage({ params }: { params: { id: string } }) {
-  const student = STUDENTS.find((s) => s.id === params.id);
+export default async function StudentDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const student = STUDENTS.find((s) => s.id === id);
   if (!student) notFound();
 
   const invoices = getMockInvoices(student.id);
