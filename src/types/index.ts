@@ -139,3 +139,13 @@ export interface Payment {
   reference?: string;
   paid_at: string;
 }
+
+export interface Plan {
+  id: string;
+  name: string;
+  description?: string;
+  tag: string;
+  class_ids: string[];
+  price_override?: number;
+  status: "active" | "inactive";
+}

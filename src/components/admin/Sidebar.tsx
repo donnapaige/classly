@@ -11,6 +11,7 @@ import {
   MessageSquare,
   Banknote,
   BookOpen,
+  Package,
   X,
 } from "lucide-react";
 import type { NavSection } from "@/types";
@@ -24,6 +25,7 @@ const NAV: NavSection[] = [
       { label: "Schedule",   href: "/admin/schedule",        icon: CalendarDays },
       { label: "Students",   href: "/admin/students",        icon: Users },
       { label: "Enrollment", href: "/admin/enrollment/new",  icon: UserPlus },
+      { label: "Plans",      href: "/admin/plans",           icon: Package },
       { label: "Billing",    href: "/admin/billing",         icon: Receipt },
       { label: "Messaging",  href: "/admin/messaging",       icon: MessageSquare, badge: 2 },
     ],

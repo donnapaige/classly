@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { Topbar } from "@/components/admin/Topbar";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { AssignPlanButton } from "@/components/admin/AssignPlanButton";
 import type { StudentStatus, InvoiceStatus } from "@/types";
 
 // ── Mock data (mirrors students/page.tsx — replace with Supabase in Phase 4) ──
@@ -327,6 +328,7 @@ export default function StudentDetailPage({ params }: { params: { id: string } }
               <div style={{ padding: "14px 18px", display: "flex", flexDirection: "column", gap: 8 }}>
                 <Button variant="primary" full href="/admin/billing">Log Payment</Button>
                 <Button variant="ghost" full href="/admin/messaging">Send Message</Button>
+                <AssignPlanButton />
                 <Button variant="ghost" full>Change Status</Button>
                 <Button variant="danger" full outline>Unenroll</Button>
               </div>
