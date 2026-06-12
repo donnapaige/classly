@@ -14,11 +14,32 @@ function nextDueDate() {
   return d.toLocaleDateString("en-PH", { month: "long", day: "numeric", year: "numeric" });
 }
 
+// ── Shared student list (mirrors register/page.tsx) ──────────
+const MOCK_STUDENTS = [
+  { id: "s1",  name: "Sophia dela Cruz",  parent: "Maria dela Cruz",   parent_email: "maria.dc@email.com" },
+  { id: "s2",  name: "Lucas Reyes",        parent: "Jose Reyes",         parent_email: "jose.r@email.com" },
+  { id: "s3",  name: "Isabella Cruz",      parent: "Ana Cruz",           parent_email: "ana.c@email.com" },
+  { id: "s4",  name: "Miguel Santos",      parent: "Roberto Santos",     parent_email: "rob.s@email.com" },
+  { id: "s5",  name: "Mia Santos",         parent: "Liza Santos",        parent_email: "liza.s@email.com" },
+  { id: "s6",  name: "Noah Villanueva",    parent: "Carlo Villanueva",   parent_email: "carlo.v@email.com" },
+  { id: "s7",  name: "Sofia Mendoza",      parent: "Grace Mendoza",      parent_email: "grace.m@email.com" },
+  { id: "s8",  name: "James Tan",          parent: "Self (Adult)",       parent_email: "james.t@email.com" },
+  { id: "s9",  name: "Hannah Kim",         parent: "Jin Kim",            parent_email: "jin.k@email.com" },
+  { id: "s10", name: "Ethan Lim",          parent: "Patricia Lim",       parent_email: "pat.l@email.com" },
+  { id: "s11", name: "Aria Dela Rosa",     parent: "Tony Dela Rosa",     parent_email: "tony.dr@email.com" },
+];
+
 // ── Inner component ───────────────────────────────────────────
 function ConfirmForm() {
   const searchParams = useSearchParams();
   const type = searchParams.get("type") ?? "new-family";
+  const studentId = searchParams.get("studentId");
   const backHref = `/admin/enrollment/new/register?type=${type}`;
+
+  const studentLabel =
+    type === "returning" && studentId
+      ? (MOCK_STUDENTS.find((s) => s.id === studentId)?.name ?? "Student")
+      : "New Student";
 
   const [selected, setSelected] = useState<Set<ClassId>>(new Set());
   const [activePlanId, setActivePlanId] = useState<string | null>(null);
@@ -225,7 +246,7 @@ function ConfirmForm() {
               </div>
               <div style={{ padding: "16px 18px" }}>
                 <div style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--ink-4)", marginBottom: 12 }}>
-                  New Student
+                  {studentLabel}
                 </div>
 
                 {/* Plan rate badge */}
