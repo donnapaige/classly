@@ -12,6 +12,7 @@ import {
   Banknote,
   BookOpen,
   Package,
+  Settings,
   X,
 } from "lucide-react";
 import type { NavSection } from "@/types";
@@ -95,6 +96,14 @@ export function Sidebar() {
 
       {/* User footer */}
       <div className="sidebar-foot">
+        <Link
+          href="/settings"
+          className={`nav-item${pathname.startsWith("/settings") ? " is-active" : ""}`}
+          onClick={() => setSidebarOpen(false)}
+        >
+          <Settings size={16} />
+          <span>Settings</span>
+        </Link>
         <div className="user-pill">
           <div className="avatar">M</div>
           <div>
