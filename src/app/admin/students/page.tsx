@@ -167,7 +167,7 @@ export default function StudentsPage() {
                       {/* Actions */}
                       <td>
                         <div style={{ display: "flex", gap: 6 }}>
-                          <Button variant="ghost" size="sm">View</Button>
+                          <Button variant="ghost" size="sm" href={`/admin/students/${s.id}`}>View</Button>
                         </div>
                       </td>
                     </tr>

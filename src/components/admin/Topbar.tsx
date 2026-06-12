@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { useUIStore } from "@/stores/ui";
 
 interface TopbarProps {
-  title: string;
+  title: React.ReactNode;
   actions?: React.ReactNode;
 }
 

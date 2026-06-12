@@ -9,21 +9,21 @@ const FORK_OPTIONS = [
     title: "New Family",
     desc: "First-time enrollment. Create a parent account, add one or more students, assign them to classes, and generate the first invoice.",
     recommended: true,
-    href: "/admin/enrollment/new?type=new-family",
+    href: "/admin/enrollment/new/register?type=new-family",
   },
   {
     id: "returning",
     title: "Returning Family",
     desc: "Existing family re-enrolling for a new term, adding a sibling, or switching classes. Pulls their existing account and student records.",
     recommended: false,
-    href: "/admin/enrollment/new?type=returning",
+    href: "/admin/enrollment/new/register?type=returning",
   },
   {
     id: "adult",
     title: "Adult Learner",
     desc: "Individual adult student enrolling on their own account (no parent/guardian). Ideal for adults-only classes.",
     recommended: false,
-    href: "/admin/enrollment/new?type=adult",
+    href: "/admin/enrollment/new/register?type=adult",
   },
 ];
 
