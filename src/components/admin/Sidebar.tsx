@@ -11,8 +11,10 @@ import {
   MessageSquare,
   Banknote,
   BookOpen,
+  X,
 } from "lucide-react";
 import type { NavSection } from "@/types";
+import { useUIStore } from "@/stores/ui";
 
 const NAV: NavSection[] = [
   {
@@ -37,9 +39,20 @@ const NAV: NavSection[] = [
 
 export function Sidebar() {
   const pathname = usePathname();
+  const sidebarOpen = useUIStore((s) => s.sidebarOpen);
+  const setSidebarOpen = useUIStore((s) => s.setSidebarOpen);
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar${sidebarOpen ? " is-open" : ""}`}>
+      {/* Mobile close button — hidden on desktop via CSS */}
+      <button
+        className="sidebar-close-btn"
+        onClick={() => setSidebarOpen(false)}
+        aria-label="Close navigation"
+      >
+        <X size={14} />
+      </button>
+
       {/* Brand */}
       <div className="brand">
         <div className="brand-mark">V</div>
@@ -65,6 +78,7 @@ export function Sidebar() {
                 key={item.href}
                 href={item.href}
                 className={`nav-item${isActive ? " is-active" : ""}`}
+                onClick={() => setSidebarOpen(false)}
               >
                 <Icon size={16} />
                 <span>{item.label}</span>

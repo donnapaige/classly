@@ -687,13 +687,151 @@ table.tbl tbody tr:hover td {
   }
 }
 
-/* ── Responsive: admin gate at 1024px ─────────── */
+/* ── Admin hamburger button (desktop: hidden) ────────────── */
+.topbar-hamburger {
+  display: none;
+}
+
+.sidebar-close-btn {
+  display: none;
+}
+
+.mob-overlay {
+  display: none;
+}
+
+/* ── Responsive: admin mobile (≤ 1023px) ─────────────────── */
 @media (max-width: 1023px) {
+  /* Shell: full-width, sidebar out of flow */
   .shell {
     grid-template-columns: 1fr;
   }
+
+  /* Sidebar: slide-in drawer from left */
   .sidebar {
-    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100dvh;
+    width: 260px;
+    transform: translateX(-100%);
+    transition: transform 220ms ease, box-shadow 220ms ease;
+    z-index: 100;
+    border-right: 1px solid var(--border);
+  }
+
+  .sidebar.is-open {
+    transform: translateX(0);
+    box-shadow: var(--shadow-pop);
+  }
+
+  /* X button inside sidebar, top-right */
+  .sidebar-close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 14px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: transparent;
+    cursor: pointer;
+    color: var(--ink-3);
+    transition: background 120ms ease;
+  }
+
+  .sidebar-close-btn:hover {
+    background: var(--surface-2);
+  }
+
+  /* Backdrop behind open drawer */
+  .mob-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.4);
+    z-index: 99;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    animation: fadeIn 150ms ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* Hamburger in topbar */
+  .topbar-hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--border-2);
+    background: transparent;
+    cursor: pointer;
+    color: var(--ink-2);
+    transition: background 120ms ease;
+    flex-shrink: 0;
+  }
+
+  .topbar-hamburger:hover {
+    background: var(--surface-2);
+  }
+
+  .topbar {
+    padding: 0 16px;
+    gap: 10px;
+  }
+
+  .top-title {
+    font-size: 17px;
+  }
+
+  /* Content: tighter padding */
+  .content {
+    padding: 16px 16px 48px;
+    max-width: 100%;
+  }
+
+  /* Stats: 2-up */
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  /* Stat value: slightly smaller */
+  .stat-value {
+    font-size: 26px;
+  }
+
+  /* Two-one grid: stack columns */
+  .grid-2-1 {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  /* Tables: horizontal scroll */
+  .tbl-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Card headers: allow wrapping on narrow widths */
+  .card-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Topbar actions: hide search on very small screens */
+  @media (max-width: 480px) {
+    .topbar-search-btn {
+      display: none;
+    }
   }
 }
 
